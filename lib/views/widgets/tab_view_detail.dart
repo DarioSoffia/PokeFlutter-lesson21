@@ -110,18 +110,11 @@ class _TabViewDetailState extends State<TabViewDetail>
 List<Widget> moveList(Pokemon pokemon, BuildContext context) {
   List<Widget> typesList = [];
   for (var i = 0; i < pokemon.moves.length; i++) {
-    // if (i >= 1) {
-    //   typesList.add(SizedBox(
-    //     height: 4.h,
-    //   ));
-    // }
     typesList.add(
       Container(
         // height: 50.r,
         // width: 100.r,
         decoration: BoxDecoration(
-            //color: gray[500]?.withOpacity(0.2),
-            //borderRadius: BorderRadius.circular(24.r),
             border:
                 Border(bottom: BorderSide(width: 1.w, color: Colors.black))),
         padding: EdgeInsets.zero,
