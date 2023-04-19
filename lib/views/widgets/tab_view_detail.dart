@@ -92,10 +92,10 @@ class _TabViewDetailState extends State<TabViewDetail>
                         ],
                       ),
                     ),
-              Text("test2"),
-              GridView.count(
-                crossAxisCount: 1,
-                mainAxisSpacing: 10,
+              Container(
+                child: ListView(children: getStats(widget.pokemon!)),
+              ),
+              ListView(
                 children: moveList(widget.pokemon!, context),
               ),
               Text("test4"),
@@ -111,14 +111,8 @@ List<Widget> moveList(Pokemon pokemon, BuildContext context) {
   List<Widget> typesList = [];
   for (var i = 0; i < pokemon.moves.length; i++) {
     typesList.add(
-      Container(
-        // height: 50.r,
-        // width: 100.r,
-        decoration: BoxDecoration(
-            border:
-                Border(bottom: BorderSide(width: 1.w, color: Colors.black))),
-        padding: EdgeInsets.zero,
-        child: Text(
+      ListTile(
+        title: Text(
           pokemon.moves[i],
           textAlign: TextAlign.left,
           style: Theme.of(context).textTheme.bodyLarge,
@@ -127,4 +121,18 @@ List<Widget> moveList(Pokemon pokemon, BuildContext context) {
     );
   }
   return typesList;
+}
+
+List<Widget> getStats(Pokemon pokemon) {
+  List<Widget> returnList = [];
+  for (final stat in pokemon.stats.keys) {
+    returnList.add(ListTile(
+      title: Text(stat),
+      subtitle: Text(
+        pokemon.stats[stat].toString(),
+      ),
+    ));
+  }
+
+  return returnList;
 }

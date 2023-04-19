@@ -7,6 +7,7 @@ class Pokemon {
   final double height;
   final List<String> typesList;
   final List<String> moves;
+  final Map<String, int> stats;
 
   Pokemon({
     required this.id,
@@ -17,6 +18,7 @@ class Pokemon {
     required this.height,
     required this.typesList,
     required this.moves,
+    required this.stats,
   });
 
   Pokemon.fromJson(Map<String, dynamic> json)
@@ -28,7 +30,16 @@ class Pokemon {
         weight = json["weight"].toDouble() / 10.0,
         height = json["height"].toDouble() * 10.0,
         typesList = getListTypesFromJson(json["types"]),
-        moves = getMovesFromJson(json["moves"]);
+        moves = getMovesFromJson(json["moves"]),
+        stats = getstatsFromJson(json);
+}
+
+Map<String, int> getstatsFromJson(Map<String, dynamic> json) {
+  Map<String, int> finalMap = {};
+  for (final stat in json["stats"]) {
+    finalMap.putIfAbsent(stat["stat"]["name"], () => stat["base_stat"]);
+  }
+  return finalMap;
 }
 
 List<String> getListTypesFromJson(List<dynamic> json) {
