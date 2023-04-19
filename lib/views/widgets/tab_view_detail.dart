@@ -98,7 +98,7 @@ class _TabViewDetailState extends State<TabViewDetail>
                 mainAxisSpacing: 10,
                 children: moveList(widget.pokemon!, context),
               ),
-              Text("4"),
+              Text("test4"),
             ]),
           )
         ],
