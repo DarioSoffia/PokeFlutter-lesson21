@@ -1,7 +1,6 @@
 class Pokemon {
   final int id;
   final String name;
-  final String ability;
   final String urlSprite;
   final String urlImage;
   final double weight;
@@ -18,7 +17,6 @@ class Pokemon {
     required this.height,
     required this.typesList,
     required this.moves,
-    required this.ability,
   });
 
   Pokemon.fromJson(Map<String, dynamic> json)
@@ -29,7 +27,6 @@ class Pokemon {
         name = json["species"]["name"],
         weight = json["weight"].toDouble() / 10.0,
         height = json["height"].toDouble() * 10.0,
-        ability = json["abilities"]["name"],
         typesList = getListTypesFromJson(json["types"]),
         moves = getMovesFromJson(json["moves"]);
 }
